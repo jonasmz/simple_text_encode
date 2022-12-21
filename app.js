@@ -40,11 +40,11 @@ function decode(textEncode){
     return stringDecode;
 }
 
-//funcion que remueve caracteres especiales de la cadena, solo se admiten el punto, la coma y los espacios
+//funcion que remueve caracteres especiales de la cadena.
 //retorna el string limpio de caracteres especiales
 function checkInput(textToCheck){
-   //declaro una expresion regular que solo admite caracteres alfanumericos, el punto, la coma y los espacios
-   var regex = regex = /[^a-z0-9., ]/g;
+   //declaro una expresion regular para descartar caracteres no admitidos
+   var regex = regex = /[^a-z0-9.,¡!¿? ]/g;
    //elimino los caracteres especiales a traves del metodo replaceAll y retorno el string limpio.
    return textToCheck.replaceAll(regex, '');
 }
