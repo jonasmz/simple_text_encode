@@ -41,6 +41,3 @@ function checkInput(textToCheck){
 
     return false;
 }
-
-let text = "Hola a todos, gracias por escuchar mi canciÓn.";
-console.log(checkInput(text));
