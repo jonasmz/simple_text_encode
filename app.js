@@ -9,6 +9,14 @@ const cipherKey = [
 //obtengo los botones para codificar y decodificar el texto
 const btnEncode = document.querySelector(".app__btn_encode");
 const btnDecode = document.querySelector(".app__btn_decode");
+//obtengo el boton para copiar el texto codioficado/decodificado
+const btnCopy = document.querySelector(".btn__copy");
+
+//si el navegador no soporta clipboard deshabilito el boton de copiar
+if(!navigator.clipboard){
+    btnCopy.disabled = true;
+    alert("Este navegador no soporta el copiado de texto al clipboard, el boton de copiado de texto se deshabilitara.");
+}
 
 //declaro funcion para codificar
 //retorna la cadena encriptada;
@@ -51,4 +59,9 @@ btnDecode.addEventListener('click', ()=>{
     let textToDecode = document.querySelector("#input__encode").value;
     let textDecoded = decode(textToDecode);
     document.querySelector(".result__text").innerHTML = textDecoded;
+});
+//evento para copiar texto
+btnCopy.addEventListener('click', ()=>{
+    let content = document.querySelector(".result__text").innerHTML;
+    navigator.clipboard.writeText(content);
 });
