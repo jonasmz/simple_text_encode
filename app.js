@@ -28,3 +28,19 @@ function decode(textEncode){
 
     return stringDecode;
 }
+
+//funcion que verifica que el ingreso no contenga caracteres especiales
+//retorna verdadero si contiene caracteres especiales, o falso en caso contrario
+function checkInput(textToCheck){
+    let excludeChars = ['á', 'é', 'í', 'ó', 'ú'];
+    for(i=0; i < excludeChars.length; i++){
+        if(textToCheck.toLowerCase().split('').includes(excludeChars[i])){
+            return true;
+        }
+    }    
+
+    return false;
+}
+
+let text = "Hola a todos, gracias por escuchar mi canciÓn.";
+console.log(checkInput(text));
