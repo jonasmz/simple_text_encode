@@ -29,15 +29,15 @@ function decode(textEncode){
     return stringDecode;
 }
 
-//funcion que verifica que el ingreso no contenga caracteres especiales
-//retorna verdadero si contiene caracteres especiales, o falso en caso contrario
+//funcion que remueve caracteres especiales de la cadena, solo se admiten el punto, la coma y los espacios
+//retorna el string limpio de caracteres especiales
 function checkInput(textToCheck){
-    let excludeChars = ['á', 'é', 'í', 'ó', 'ú'];
-    for(i=0; i < excludeChars.length; i++){
-        if(textToCheck.toLowerCase().split('').includes(excludeChars[i])){
-            return true;
-        }
-    }    
-
-    return false;
+   //declaro una expresion regular que solo admite caracteres alfanumericos, el punto, la coma y los espacios
+   var regex = regex = /[^a-z0-9., ]/g;
+   //elimino los caracteres especiales a traves del metodo replaceAll y retorno el string limpio.
+   return textToCheck.replaceAll(regex, '');
 }
+
+let text = "escuchen, esta es (mi} @canción";
+
+console.log(checkInput(text.toLowerCase()));
