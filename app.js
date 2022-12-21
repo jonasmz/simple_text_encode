@@ -6,11 +6,14 @@ const cipherKey = [
     ["o", "ober"],
     ["u", "ufat"]
 ]
+//obtengo los botones para codificar y decodificar el texto
+const btnEncode = document.querySelector(".app__btn_encode");
+const btnDecode = document.querySelector(".app__btn_decode");
 
 //declaro funcion para codificar
 //retorna la cadena encriptada;
 function encode(textToEncode){
-    let stringEncode = textToEncode;
+    let stringEncode = checkInput(textToEncode.toLowerCase());
     cipherKey.forEach(element=>{
         stringEncode = stringEncode.replaceAll(element[0], element[1]);
     });
@@ -38,6 +41,14 @@ function checkInput(textToCheck){
    return textToCheck.replaceAll(regex, '');
 }
 
-let text = "escuchen, esta es (mi} @canción";
-
-console.log(checkInput(text.toLowerCase()));
+//eventos para asociar el boton con la accion a realizar
+btnEncode.addEventListener('click', ()=> {
+    let textToEncode = document.querySelector("#input__encode").value;
+    let textEncoded = encode(textToEncode);
+    document.querySelector(".result__text").innerHTML = textEncoded;
+});
+btnDecode.addEventListener('click', ()=>{
+    let textToDecode = document.querySelector("#input__encode").value;
+    let textDecoded = decode(textToDecode);
+    document.querySelector(".result__text").innerHTML = textDecoded;
+});
